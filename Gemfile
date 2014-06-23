@@ -10,9 +10,13 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
-group :development  do
+group :development do
   gem 'better_errors'
   gem 'pry-byebug'
-  gem 'pry-rails',          group: :test
+  gem 'pry-rails', group: :test
   gem 'spring'
+end
+
+group :test do
+  gem 'rspec-rails', '~> 2.99', group: :development
 end
