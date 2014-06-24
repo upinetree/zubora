@@ -30,7 +30,10 @@ module Zubora
     config.sass.preferred_syntax = :sass
 
     config.generators do |g|
-      g.jbuilder false
+      g.jbuilder      false
+      g.helper        false
+      g.view_specs    false
+      g.routing_specs false
     end
   end
 end
