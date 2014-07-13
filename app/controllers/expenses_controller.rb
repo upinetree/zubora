@@ -2,7 +2,10 @@ class ExpensesController < ApplicationController
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
 
   def index
-    @expenses = Expense.all
+    respond_to do |format|
+      format.html
+      format.json { @expenses = Expense.all }
+    end
   end
 
   def show

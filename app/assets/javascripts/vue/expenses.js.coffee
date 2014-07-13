@@ -17,7 +17,7 @@ $ ->
   new Vue
     el: "#vue-expenses"
 
-    paramAttributes: ['json']
+    paramAttributes: ['expensesUrl']
 
     data:
       expenses: []
@@ -26,5 +26,5 @@ $ ->
       expense: expense
 
     created: ->
-      @expenses = JSON.parse(@json)
-
+      $.getJSON @expensesUrl, (expenses) =>
+        @expenses = expenses

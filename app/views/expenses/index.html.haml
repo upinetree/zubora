@@ -6,7 +6,7 @@
   -# TODO:
   -# = link_to '[Edit]', edit_expense_path(expense)
 
-#vue-expenses{ json: render(partial: 'index.json') }
+#vue-expenses{ expensesUrl: expenses_url }
   %ul
     %li{ 'v-component' => 'expense', 'v-repeat' => 'expenses' }
 
