@@ -1,6 +1,6 @@
 %h1 Listing expenses
 
-#vue-expenses{ expensesUrl: expenses_url }
+#vue-expenses{ json: @expenses.to_json }
   %ul
     %li{ 'v-repeat' => 'expenses' }
       &yen; {{ amount }}

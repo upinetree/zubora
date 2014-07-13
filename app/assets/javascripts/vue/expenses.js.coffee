@@ -2,16 +2,11 @@ $ ->
   new Vue
     el: "#vue-expenses"
 
-    paramAttributes: ['expensesUrl']
+    paramAttributes: ['json']
 
     data:
       expenses: []
 
     created: ->
-      @featch()
-
-    methods:
-      featch: ->
-        $.getJSON @expensesUrl, (expenses) =>
-          @expenses = expenses
+      @expenses = JSON.parse(@json)
 
