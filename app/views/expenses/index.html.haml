@@ -1,9 +1,11 @@
 %h1 Listing expenses
 
+%script#expense-template{ type: 'text/x-template' }
+  %div &yen; {{ amount }}
+
 #vue-expenses{ json: @expenses.to_json }
   %ul
-    %li{ 'v-repeat' => 'expenses' }
-      &yen; {{ amount }}
+    %li{ 'v-component' => 'expense', 'v-repeat' => 'expenses' }
       -# TODO:
       -# = link_to '[Edit]', edit_expense_path(expense)
       -# = link_to '[x]', expense, :method => :delete, :data => { :confirm => 'Are you sure?' }

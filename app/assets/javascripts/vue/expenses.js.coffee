@@ -1,4 +1,7 @@
 $ ->
+  expense = Vue.extend
+    template: "#expense-template"
+
   new Vue
     el: "#vue-expenses"
 
@@ -6,6 +9,9 @@ $ ->
 
     data:
       expenses: []
+
+    components:
+      expense: expense
 
     created: ->
       @expenses = JSON.parse(@json)
