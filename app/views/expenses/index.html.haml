@@ -2,12 +2,12 @@
 
 %script#expense-template{ type: 'text/x-template' }
   %div &yen; {{ amount }}
+  %a.destroy-expense{ 'v-on' => 'click: destroy' } [x]
+  -# TODO:
+  -# = link_to '[Edit]', edit_expense_path(expense)
 
-#vue-expenses{ json: @expenses.to_json }
+#vue-expenses{ json: render(partial: 'index.json') }
   %ul
     %li{ 'v-component' => 'expense', 'v-repeat' => 'expenses' }
-      -# TODO:
-      -# = link_to '[Edit]', edit_expense_path(expense)
-      -# = link_to '[x]', expense, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 = link_to 'New Expense', new_expense_path

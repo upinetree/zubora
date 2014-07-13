@@ -35,7 +35,7 @@ class ExpensesController < ApplicationController
 
   def destroy
     @expense.destroy
-    redirect_to expenses_url, notice: 'Expense was successfully destroyed.'
+    head :no_content
   end
 
   private
