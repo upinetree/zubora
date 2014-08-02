@@ -1,7 +1,7 @@
 %h1 Listing expenses
 
 %script#expense-template{ type: 'text/x-template' }
-  %div &yen; {{ amount }}
+  .expense-amount &yen; {{ amount }}
   %a.destroy-expense{ 'v-on' => 'click: destroy' } [x]
   -# TODO:
   -# = link_to '[Edit]', edit_expense_path(expense)
