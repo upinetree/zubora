@@ -5,12 +5,11 @@ $ ->
     methods:
       destroy: ->
         return unless confirm('削除しても良いですか？')
-        @$destroy()
         $.ajax
           type: "DELETE"
           url: @url
           success: =>
-            @$destroy
+            @$destroy()
           error: =>
             alert '削除に失敗しました（通信エラー）'
 
