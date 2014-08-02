@@ -1,12 +1,12 @@
 $ ->
   expense = Vue.extend
-    template: "#expense-template"
+    template:'#expense-template'
 
     methods:
       destroy: ->
         return unless confirm('削除しても良いですか？')
         $.ajax
-          type: "DELETE"
+          type: 'DELETE'
           url: @url
           success: =>
             @$destroy()
@@ -14,7 +14,7 @@ $ ->
             alert '削除に失敗しました（通信エラー）'
 
   new Vue
-    el: "#vue-expenses"
+    el: '#vue-expenses'
 
     paramAttributes: ['expensesUrl']
 
