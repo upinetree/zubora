@@ -11,10 +11,6 @@ class ExpensesController < ApplicationController
   def show
   end
 
-  def new
-    @expense = Expense.new
-  end
-
   def edit
   end
 
@@ -22,9 +18,9 @@ class ExpensesController < ApplicationController
     @expense = Expense.new(expense_params)
 
     if @expense.save
-      redirect_to @expense, notice: 'Expense was successfully created.'
+      render json: { expense: @expense }
     else
-      render :new
+      render json: { errors: @expense.errors.full_messages }
     end
   end
 

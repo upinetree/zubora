@@ -10,4 +10,5 @@
   %ul
     %li{ 'v-component' => 'expense', 'v-repeat' => 'expenses' }
 
-= link_to 'New Expense', new_expense_path
+  #new-expense
+    %input.new-expense-field{ autofocus: true, autocomplete: 'off', 'v-model' => 'newExpense', 'v-on' => 'keyup: createExpense | key enter' }
