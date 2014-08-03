@@ -1,5 +1,5 @@
 class ExpensesController < ApplicationController
-  before_action :set_expense, only: [:update, :destroy]
+  before_action :set_expense, only: [:show, :update, :destroy]
 
   def index
     respond_to do |format|
@@ -8,11 +8,14 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def create
     @expense = Expense.new(expense_params)
 
     if @expense.save
-      render partial: 'expense'
+      redirect_to @expense
     else
       render json: { errors: @expense.errors.full_messages }
     end
@@ -20,7 +23,7 @@ class ExpensesController < ApplicationController
 
   def update
     if @expense.update(expense_params)
-      render partial: 'expense'
+      redirect_to @expense
     else
       render json: { errors: @expense.errors.full_messages }
     end
