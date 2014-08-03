@@ -26,9 +26,9 @@ class ExpensesController < ApplicationController
 
   def update
     if @expense.update(expense_params)
-      redirect_to @expense, notice: 'Expense was successfully updated.'
+      render json: { expense: @expense }
     else
-      render :edit
+      render json: { errors: @expense.errors.full_messages }
     end
   end
 

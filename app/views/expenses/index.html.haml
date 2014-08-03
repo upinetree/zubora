@@ -1,10 +1,11 @@
 %h1 Listing expenses
 
 %script#expense-template{ type: 'text/x-template' }
-  .expense-amount &yen; {{ amount }}
+  .expense{ 'v-class' => 'editing: editing' }
+    %span &yen;
+    %span.amount{ 'v-model' => 'amount', 'v-on' => 'click: edit' }
+    %input.edit{ 'v-model' => 'editingAmount', 'v-on' => 'blur: update, keyup: update | key enter', 'v-if' => 'editing' }
   %a.destroy-expense{ 'v-on' => 'click: destroy' } [x]
-  -# TODO:
-  -# = link_to '[Edit]', edit_expense_path(expense)
 
 #vue-expenses{ expensesUrl: expenses_url }
   %ul

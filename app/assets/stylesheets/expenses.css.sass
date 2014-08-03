@@ -1,5 +1,19 @@
 #vue-expenses
-  .expense-amount
+  .expense
     display: inline-block
+    width: 100px
+
+    .amount
+      cursor: pointer
+      &:hover
+        color: silver
+
+  .editing
+    color: silver
+    .amount
+      display: none
+    input
+      width: 5em
+
   .destroy-expense
     cursor: pointer
