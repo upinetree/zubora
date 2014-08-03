@@ -12,7 +12,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.new(expense_params)
 
     if @expense.save
-      render json: { expense: @expense }
+      render partial: 'expense'
     else
       render json: { errors: @expense.errors.full_messages }
     end
@@ -20,7 +20,7 @@ class ExpensesController < ApplicationController
 
   def update
     if @expense.update(expense_params)
-      render json: { expense: @expense }
+      render partial: 'expense'
     else
       render json: { errors: @expense.errors.full_messages }
     end
