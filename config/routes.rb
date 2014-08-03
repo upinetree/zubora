@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :expenses, except: :new
+  resources :expenses, only: [:index, :create, :update, :destroy]
 end
