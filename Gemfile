@@ -20,4 +20,5 @@ end
 
 group :test do
   gem 'rspec-rails', '~> 2.99', group: :development
+  gem 'factory_girl_rails', group: :development
 end
