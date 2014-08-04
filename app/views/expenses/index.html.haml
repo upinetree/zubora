@@ -5,7 +5,8 @@
     %span &yen;
     %span.amount{ 'v-model' => 'amount', 'v-on' => 'click: edit' }
     %input.edit{ 'v-model' => 'editingAmount', 'v-on' => 'blur: update, keyup: update | key enter', 'v-if' => 'editing' }
-  %a.destroy-expense{ 'v-on' => 'click: destroy' } [x]
+  %span.destroy-expense{ 'v-on' => 'click: destroy' }
+    = fa_icon("trash-o")
 
 #vue-expenses{ expensesUrl: expenses_url }
   %ul

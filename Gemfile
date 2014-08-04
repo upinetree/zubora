@@ -9,6 +9,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'bower-rails'
 gem 'jbuilder', '~> 2.0'
+gem 'font-awesome-rails'
 
 group :development do
   gem 'better_errors'

@@ -1,12 +1,14 @@
+=clickable($hover-color)
+  cursor: pointer
+  &:hover
+    color: $hover-color
+
 #vue-expenses
   .expense
     display: inline-block
     width: 100px
-
     .amount
-      cursor: pointer
-      &:hover
-        color: silver
+      +clickable(silver)
 
   .editing
     color: silver
@@ -16,4 +18,6 @@
       width: 5em
 
   .destroy-expense
-    cursor: pointer
+    +clickable(red)
+    color: silver
+    display: inline-block
