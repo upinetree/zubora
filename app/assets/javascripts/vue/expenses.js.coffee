@@ -19,8 +19,9 @@ $ ->
 
       edit: ->
         @editing = true
+        @editingAmount = @amount
         setTimeout =>
-          $('input', @$el).attr('placeholder', @amount).focus()
+          $('input', @$el).focus()
         , 5
 
       update: ->
