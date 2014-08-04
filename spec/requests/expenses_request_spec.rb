@@ -21,8 +21,7 @@ describe 'Expenses' do
 
       it '支出一覧を取得する' do
         expected_amounts = expenses.map(&:amount)
-        actual_expenses = JSON.parse(response.body)
-        actual_amounts = actual_expenses.map { |e| e['amount'] }
+        actual_amounts = json.map { |e| e['amount'] }
 
         expect(actual_amounts).to match_array(expected_amounts)
       end
@@ -36,7 +35,7 @@ describe 'Expenses' do
     before { xhr :get, path }
 
     it '支出情報を取得する' do
-      actual_expense = JSON.parse(response.body)['expense']
+      actual_expense = json['expense']
 
       expect(actual_expense['id']    ).to eq(expense.id)
       expect(actual_expense['amount']).to eq(expense.amount)
@@ -63,7 +62,6 @@ describe 'Expenses' do
       let(:params) { { expense: attributes_for(:expense, amount: nil) } }
 
       it 'エラー情報を含んだjsonを取得する' do
-        json = JSON.parse(response.body)
         expect(json['errors']).to eq(["Amount can't be blank"])
       end
     end
@@ -89,7 +87,6 @@ describe 'Expenses' do
       let(:params) { { expense: attributes_for(:expense, amount: nil) } }
 
       it 'エラー情報を含んだjsonを取得する' do
-        json = JSON.parse(response.body)
         expect(json['errors']).to eq(["Amount can't be blank"])
       end
     end
