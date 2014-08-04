@@ -7,16 +7,6 @@ $ ->
       editingAmount: ''
 
     methods:
-      destroy: ->
-        return unless confirm('削除しても良いですか？')
-        $.ajax
-          type: 'DELETE'
-          url: @url
-          success: =>
-            @$destroy()
-          error: =>
-            alert '削除に失敗しました（通信エラー）'
-
       edit: ->
         @editing = true
         @editingAmount = @amount
@@ -40,6 +30,16 @@ $ ->
               @amount = response.expense.amount
           error: (response) =>
             alert '更新に失敗しました（通信エラー）'
+
+      destroy: ->
+        return unless confirm('削除しても良いですか？')
+        $.ajax
+          type: 'DELETE'
+          url: @url
+          success: =>
+            @$destroy()
+          error: =>
+            alert '削除に失敗しました（通信エラー）'
 
   new Vue
     el: '#vue-expenses'
