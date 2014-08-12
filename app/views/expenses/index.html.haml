@@ -1,16 +1,17 @@
 %h1 Listing expenses
 
 %script#expense-template{ type: 'text/x-template' }
-  .expense{ 'v-class' => 'editing: editing' }
+  .col-xs-8{ 'v-class' => 'editing: editing' }
     %span &yen;
     %span.amount{ 'v-model' => 'amount', 'v-on' => 'click: edit' }
     %input.edit{ 'v-model' => 'editingAmount', 'v-on' => 'blur: update, keyup: update | key enter', 'v-if' => 'editing' }
-  %span.destroy-expense{ 'v-on' => 'click: destroy' }
-    = fa_icon("trash-o")
+  .col-xs-4
+    %span.destroy-expense{ 'v-on' => 'click: destroy' }
+      = fa_icon("trash-o")
 
 #vue-expenses{ expensesUrl: expenses_url }
-  %ul
-    %li{ 'v-component' => 'expense', 'v-repeat' => 'expenses' }
+  .expense.row{ 'v-component' => 'expense', 'v-repeat' => 'expenses' }
 
-  #new-expense
-    %input.new-expense-field{ autofocus: true, autocomplete: 'off', 'v-model' => 'newExpense', 'v-on' => 'keyup: createExpense | key enter' }
+  #new-expense.row
+    .col-xs-12
+      %input.new-expense-field{ autofocus: true, autocomplete: 'off', 'v-model' => 'newExpense', 'v-on' => 'keyup: createExpense | key enter' }
