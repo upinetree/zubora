@@ -12,7 +12,7 @@ $ ->
         @editingAmount = @amount
         setTimeout =>
           $('input', @$el).focus()
-        , 5
+        , 50
 
       update: ->
         @editing = false
