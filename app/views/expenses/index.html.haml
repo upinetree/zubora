@@ -2,9 +2,10 @@
 
 %script#expense-template{ type: 'text/x-template' }
   .col-xs-8{ 'v-class' => 'editing: editing' }
-    %span &yen;
-    %span.amount{ 'v-model' => 'amount', 'v-on' => 'click: edit' }
-    %input.edit{ 'v-model' => 'editingAmount', 'v-on' => 'blur: update, keyup: update | key enter', 'v-if' => 'editing' }
+    %label.amount{ 'v-on' => 'click: edit' }
+      &yen;
+      {{amount}}
+    %input.edit.form-control{ 'v-model' => 'editingAmount', 'v-on' => 'blur: update, keyup: update | key enter', 'v-if' => 'editing' }
   .col-xs-4
     %span.destroy-expense{ 'v-on' => 'click: destroy' }
       = fa_icon("trash-o")
@@ -13,5 +14,5 @@
   .expense.row{ 'v-component' => 'expense', 'v-repeat' => 'expenses' }
 
   #new-expense.row
-    .col-xs-12
-      %input.new-expense-field{ autofocus: true, autocomplete: 'off', 'v-model' => 'newExpense', 'v-on' => 'keyup: createExpense | key enter' }
+    .col-xs-8
+      %input.new-expense-field.form-control{ autofocus: true, autocomplete: 'off', 'v-model' => 'newExpense', 'v-on' => 'keyup: createExpense | key enter' }
