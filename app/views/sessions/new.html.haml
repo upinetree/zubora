@@ -1,0 +1,15 @@
+.page-header
+  %h1 Zubora
+
+%p
+  = link_to "Sign up here", "/auth/identity/register", class:'btn btn-large btn-info btn-block btn-lg'
+
+= form_tag (ENV['RAILS_RELATIVE_URL_ROOT'] || "") + '/auth/identity/callback', class: "form-signin" do
+  .form-group
+    = label_tag :auth_key, User.human_attribute_name(:screen_name)
+    = text_field_tag :auth_key, nil, class: "input-block-level form-control"
+  .form-group
+    = label_tag :password, User.human_attribute_name(:password)
+    = password_field_tag :password, nil, class: "input-block-level form-control"
+  = submit_tag 'Sign in', class: "btn btn-large btn-primary pull-right btn-lg"
+
