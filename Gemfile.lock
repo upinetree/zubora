@@ -34,6 +34,8 @@ GEM
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.2.0.1)
       sass (~> 3.2)
     bower-rails (0.8.3)
@@ -50,6 +52,7 @@ GEM
       execjs
     coffee-script-source (1.7.1)
     columnize (0.8.9)
+    debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
@@ -170,6 +173,7 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
+  binding_of_caller
   bootstrap-sass
   bower-rails
   coffee-rails (~> 4.0.0)
