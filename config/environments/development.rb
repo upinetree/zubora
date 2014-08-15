@@ -34,4 +34,9 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # OmniAuthの認証に失敗した場合リダイレクトする（development環境以外では設定不要）
+  OmniAuth.config.on_failure = Proc.new { |env|
+    OmniAuth::FailureEndpoint.new(env).redirect_to_failure
+  }
 end
