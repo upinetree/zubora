@@ -1,0 +1,11 @@
+- flash.each do |name, msg|
+  - alert_class_name = case name
+    - when 'notice'; 'alert alert-success'
+    - when 'alert';  'alert alert-danger'
+    - when 'info';   'alert alert-info'
+  - if alert_class_name.present?
+    %div{ class: alert_class_name }
+      %button.close{ 'data-dismiss' => 'alert', type: :button }
+        = fa_icon('times-circle-o')
+      = simple_format(msg)
+
