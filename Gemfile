@@ -4,6 +4,7 @@ gem 'rails', '4.1.1'
 
 gem 'jbuilder', '~> 2.0'
 gem 'mysql2'
+gem 'omniauth-identity'
 
 # assets
 gem 'bower-rails'
