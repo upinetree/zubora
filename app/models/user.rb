@@ -1,4 +1,6 @@
 class User < OmniAuth::Identity::Models::ActiveRecord
+  has_many :expenses, dependent: :destroy
+
   validates :email,           presence: true, uniqueness: true
   validates :password_digest, presence: true
   validates :screen_name,     presence:      true,

@@ -4,7 +4,7 @@ class ExpensesController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      format.json { @expenses = Expense.all }
+      format.json { @expenses = current_user.expenses }
     end
   end
 
@@ -12,7 +12,7 @@ class ExpensesController < ApplicationController
   end
 
   def create
-    @expense = Expense.new(expense_params)
+    @expense = current_user.expenses.build(expense_params)
 
     if @expense.save
       redirect_to @expense
@@ -35,6 +35,7 @@ class ExpensesController < ApplicationController
   end
 
   private
+
   def set_expense
     @expense = Expense.find(params[:id])
   end
