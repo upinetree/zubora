@@ -11,20 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815065539) do
+ActiveRecord::Schema.define(version: 20140816175159) do
 
   create_table "expenses", force: true do |t|
     t.integer  "amount",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id",    null: false
   end
 
+  add_index "expenses", ["user_id"], name: "index_expenses_on_user_id", using: :btree
+
   create_table "users", force: true do |t|
-    t.string   "screen_name",     null: false
     t.string   "email",           null: false
     t.string   "password_digest", null: false
+    t.string   "screen_name",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["screen_name"], name: "index_users_on_screen_name", unique: true, using: :btree
 
 end
