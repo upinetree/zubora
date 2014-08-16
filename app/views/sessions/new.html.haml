@@ -6,7 +6,7 @@
   = link_to "Sign out", signout_url, class:'btn btn-large btn-danger btn-block btn-lg'
 - else
   %p
-    = link_to "Sign up here", "/auth/identity/register", class:'btn btn-large btn-info btn-block btn-lg'
+    = link_to "Sign up here", new_user_path, class:'btn btn-large btn-info btn-block btn-lg'
 
   = form_tag (ENV['RAILS_RELATIVE_URL_ROOT'] || "") + '/auth/identity/callback', class: "form-signin" do
     .form-group
