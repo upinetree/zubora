@@ -1,8 +1,17 @@
 require 'spec_helper'
 
+def login(user)
+  OmniAuth.config.mock_auth[:identity] = OmniAuth::AuthHash.new({ provider: 'identity', uid: user.id })
+  post '/auth/identity/callback', screen_name: user.screen_name, password: 'password1'
+end
+
 describe 'Expenses' do
+  let!(:user) { create(:user) }
+
+  before { login(user) }
+
   describe 'GET /expenses' do
-    let!(:expenses) { create_list(:expense, 3) }
+    let!(:expenses) { create_list(:expense, 3, user: user) }
 
     context 'html' do
       let(:path) { '/expenses' }
@@ -29,7 +38,7 @@ describe 'Expenses' do
   end
 
   describe 'GET /expenses/:id' do
-    let!(:expense) { create(:expense) }
+    let!(:expense) { create(:expense, user: user) }
     let(:path) { "/expenses/#{expense.id}" }
 
     before { xhr :get, path }
@@ -68,7 +77,7 @@ describe 'Expenses' do
   end
 
   describe 'PUT /expenses/:id' do
-    let!(:expense) { create(:expense) }
+    let!(:expense) { create(:expense, user: user) }
     let(:path) { "/expenses/#{expense.id}" }
 
     before { put path, params }
@@ -93,7 +102,7 @@ describe 'Expenses' do
   end
 
   describe 'DELETE /expenses/:id' do
-    let!(:expense) { create(:expense) }
+    let!(:expense) { create(:expense, user: user) }
     let(:path) { "/expenses/#{expense.id}" }
 
     before { delete path }
