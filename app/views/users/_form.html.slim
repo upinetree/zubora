@@ -1,12 +1,12 @@
 = form_for(@user) do |f|
   - if @user.errors.any?
     #error_explanation.alert.alert-danger
-      %h2
+      h2
         = pluralize(@user.errors.count, "error")
-        prohibited this user from being saved:
-      %ul
+        | prohibited this user from being saved:
+      ul
         - @user.errors.full_messages.each do |message|
-          %li= message
+          li= message
   .form-group
     = f.label :screen_name
     = f.text_field :screen_name, class:'form-control'
