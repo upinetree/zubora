@@ -34,6 +34,12 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+demo:
+  <<: *default
+  database: zubora_demo
+  username: zubora
+  password: <%= ENV['ZUBORA_DATABASE_PASSWORD'] %>
+
 production:
   <<: *default
   database: zubora_production

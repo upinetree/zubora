@@ -23,6 +23,10 @@ group :development do
   gem 'spring'
 end
 
+group :demo do
+  gem 'rails_12factor'
+end
+
 group :test do
   gem 'factory_girl_rails', group: :development
   gem 'rspec-rails', '~> 2.99', group: :development
