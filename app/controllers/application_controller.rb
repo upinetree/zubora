@@ -8,12 +8,23 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    begin
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    rescue
+      sign_out
+    end
   end
 
   def authenticate
     unless current_user
       redirect_to signin_path
     end
+  end
+
+  private
+
+  def sign_out
+    @current_user = nil
+    session[:user_id] = nil
   end
 end
