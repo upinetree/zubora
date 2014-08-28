@@ -7,7 +7,6 @@ gem 'mysql2'
 gem 'omniauth-identity'
 
 # assets
-gem 'bower-rails'
 gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'font-awesome-rails'

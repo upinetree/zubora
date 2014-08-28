@@ -38,7 +38,6 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.2.0.1)
       sass (~> 3.2)
-    bower-rails (0.8.3)
     builder (3.2.2)
     byebug (2.7.0)
       columnize (~> 0.3)
@@ -177,7 +176,6 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
-  bower-rails
   coffee-rails (~> 4.0.0)
   factory_girl_rails
   font-awesome-rails
