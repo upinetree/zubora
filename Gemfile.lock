@@ -80,13 +80,13 @@ GEM
     mime-types (1.25.1)
     minitest (5.4.0)
     multi_json (1.10.1)
-    mysql2 (0.3.16)
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
     omniauth-identity (1.1.1)
       bcrypt-ruby (~> 3.0)
       omniauth (~> 1.0)
+    pg (0.17.1)
     polyglot (0.3.5)
     pry (0.10.0)
       coderay (~> 1.1.0)
@@ -181,8 +181,8 @@ DEPENDENCIES
   font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
-  mysql2
   omniauth-identity
+  pg
   pry-byebug
   pry-rails
   rails (= 4.1.1)

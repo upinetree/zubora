@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140816175159) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "expenses", force: true do |t|
     t.integer  "amount",     null: false
     t.datetime "created_at"
