@@ -72,3 +72,7 @@ $ ->
             alert '作成に失敗しました（通信エラー）'
         @newExpense = ''
 
+      destroyExpense: (expense) ->
+        expense.destroy()
+        @expenses.$remove(expense.$data)
+
