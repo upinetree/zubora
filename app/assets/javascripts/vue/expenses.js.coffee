@@ -54,8 +54,8 @@ $ ->
       expense: expense
 
     created: ->
-      $.getJSON @expensesUrl, (expenses) =>
-        @expenses = expenses
+      $.getJSON @expensesUrl, (response) =>
+        @expenses = response.expenses
 
     methods:
       createExpense: ->

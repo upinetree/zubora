@@ -30,7 +30,7 @@ describe 'Expenses' do
 
       it '支出一覧を取得する' do
         expected_amounts = expenses.map(&:amount)
-        actual_amounts = json.map { |e| e['amount'] }
+        actual_amounts = json['expenses'].map { |e| e['amount'] }
 
         expect(actual_amounts).to match_array(expected_amounts)
       end
