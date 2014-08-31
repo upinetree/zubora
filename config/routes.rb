@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   match '/auth/failure' => 'sessions#failure', via: :get
   match '/signout' => 'sessions#destroy', via: :delete
 
-  resources :users
+  resources :users, except: [:edit, :destroy]
+  get '/profile' => 'users#edit', as: :profile, via: :get
 
   resources :expenses, except: [:new, :edit]
 end
