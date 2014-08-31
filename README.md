@@ -1,5 +1,9 @@
 # Zubora
 
+Kakeibo for Zubora-san (WIP)
+
+demo: http://zubora.herokuapp.com/sessions/new
+
 ## Getting Started
 
 ```
