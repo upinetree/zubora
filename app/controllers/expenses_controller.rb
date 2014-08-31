@@ -4,7 +4,7 @@ class ExpensesController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      format.json { @expenses = current_user.expenses }
+      format.json { @expenses = current_user.expenses.order(id: :asc) }
     end
   end
 
