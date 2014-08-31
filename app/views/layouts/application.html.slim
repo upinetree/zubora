@@ -25,9 +25,9 @@ html
               li= link_to "@#{current_user.screen_name}", profile_path
               li= link_to 'Sign out', signout_path, method: :delete
 
-    .masthead
-      = render partial: 'shared/flash'
-
     .container
+      .masthead
+        = render partial: 'shared/flash'
+
       = yield
 
