@@ -2,7 +2,7 @@
   h1 Zubora
 
 p
-  = link_to "Sign up here", new_user_path, class:'btn btn-large btn-info btn-block btn-lg'
+  = link_to "Sign up here", signup_path, class:'btn btn-large btn-info btn-block btn-lg'
 
 = form_tag (ENV['RAILS_RELATIVE_URL_ROOT'] || "") + '/auth/identity/callback', class: "form-signin" do
   .form-group
