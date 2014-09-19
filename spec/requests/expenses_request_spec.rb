@@ -6,7 +6,7 @@ def login(user)
 end
 
 describe 'Expenses' do
-  let!(:user) { create(:user) }
+  let(:user) { create(:user) }
   let(:other_user) { create(:user) }
 
   before { login(user) }
@@ -40,23 +40,24 @@ describe 'Expenses' do
   end
 
   describe 'GET /expenses/:id' do
-    let!(:expense) { create(:expense, user: user) }
-    # TODO: リファクタする。contextで分けてexpenseをそれぞれlet
     let(:path) { "/expenses/#{expense.id}" }
 
     before { xhr :get, path }
 
-    it '支出情報を取得する' do
-      actual_expense = json['expense']
+    context '自分の支出情報' do
+      let(:expense) { create(:expense, user: user) }
 
-      expect(actual_expense['id']    ).to eq(expense.id)
-      expect(actual_expense['amount']).to eq(expense.amount)
-      expect(actual_expense['url']   ).to eq(expense_url(expense))
+      it '取得できる' do
+        actual_expense = json['expense']
+
+        expect(actual_expense['id']    ).to eq(expense.id)
+        expect(actual_expense['amount']).to eq(expense.amount)
+        expect(actual_expense['url']   ).to eq(expense_url(expense))
+      end
     end
 
     context '他のユーザの支出情報' do
-      let(:other_user_expense) { create(:expense, user: other_user) }
-      let(:path) { "/expenses/#{other_user_expense.id}" }
+      let(:expense) { create(:expense, user: other_user) }
 
       it '取得できない' do
         expect(response).to redirect_to('/404.html')
