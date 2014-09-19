@@ -7,11 +7,13 @@ end
 
 describe 'Expenses' do
   let!(:user) { create(:user) }
+  let(:other_user) { create(:user) }
 
   before { login(user) }
 
   describe 'GET /expenses' do
     let!(:expenses) { create_list(:expense, 3, user: user) }
+    let!(:other_user_expense) { create(:expense, user: other_user) }
 
     context 'html' do
       let(:path) { '/expenses' }
@@ -39,6 +41,7 @@ describe 'Expenses' do
 
   describe 'GET /expenses/:id' do
     let!(:expense) { create(:expense, user: user) }
+    # TODO: リファクタする。contextで分けてexpenseをそれぞれlet
     let(:path) { "/expenses/#{expense.id}" }
 
     before { xhr :get, path }
@@ -49,6 +52,15 @@ describe 'Expenses' do
       expect(actual_expense['id']    ).to eq(expense.id)
       expect(actual_expense['amount']).to eq(expense.amount)
       expect(actual_expense['url']   ).to eq(expense_url(expense))
+    end
+
+    context '他のユーザの支出情報' do
+      let(:other_user_expense) { create(:expense, user: other_user) }
+      let(:path) { "/expenses/#{other_user_expense.id}" }
+
+      it '取得できない' do
+        expect(response).to redirect_to('/404.html')
+      end
     end
   end
 
