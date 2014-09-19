@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  unless Rails.env.development?
+    rescue_from ActiveRecord::RecordNotFound, :with => :access_denied
+  end
+
   def current_user
     begin
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -22,6 +26,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def access_denied
+    redirect_to '/404.html'
+  end
 
   def sign_out
     @current_user = nil
