@@ -3,31 +3,48 @@ $ ->
     template:'#expense-template'
 
     data:
-      editing: false
-      editingAmount: ''
+      isAmountEditing: false
+      isAccruedOnEditing: false
+      editingTarget: ''
+      editingValue: ''
 
     methods:
-      edit: ->
-        @editing = true
-        @editingAmount = @amount
+      # TODO: DRYにしたい
+      editAmount: ->
+        @isAmountEditing = true
+        @editingTarget = 'amount'
+        @editingValue = @amount # フィールドの初期値として現在の値を入れる
+        setTimeout =>
+          $('input', @$el).focus()
+        , 50
+
+      editAccruedOn: ->
+        @isAccruedOnEditing = true
+        @editingTarget = 'accrued_on'
+        @editingValue = @accrued_on # フィールドの初期値として現在の値を入れる
         setTimeout =>
           $('input', @$el).focus()
         , 50
 
       update: ->
-        @editing = false
+        @isAmountEditing = false
+        @isAccruedOnEditing = false
+
+        _expense = {}
+        _expense[@editingTarget] = @editingValue
+
         $.ajax
           type: 'POST'
           url: @url
           data:
             _method: 'PATCH'
-            expense:
-              amount: @editingAmount
+            expense: _expense
           success: (response) =>
             if (response.errors)
               alert '更新に失敗しました\n' + response.errors.join('\n')
             else
               @amount = response.expense.amount
+              @accrued_on = response.expense.accrued_on
           error: (response) =>
             alert '更新に失敗しました（通信エラー）'
 

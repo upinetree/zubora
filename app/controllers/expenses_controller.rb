@@ -41,7 +41,7 @@ class ExpensesController < ApplicationController
   end
 
   def expense_params
-    params.require(:expense).permit(:amount)
+    params.require(:expense).permit(:amount, :accrued_on)
   end
 end
 

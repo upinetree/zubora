@@ -2,14 +2,15 @@
   h1 Listing expenses
 
 script#expense-template type='text/x-template'
-  .col-xs-6 v-class='editing: editing'
-    label.amount v-on='click: edit'
+  .col-xs-6 v-class='editing: isAmountEditing'
+    label.amount v-on='click: editAmount'
       | &yen;
       | {{amount}}
-    input.edit.form-control v-model='editingAmount' v-on='blur: update, keyup: update | key enter' v-if='editing'
-  .col-xs-4
-    span.accrued_on
+    input.edit.form-control v-model='editingValue' v-on='blur: update, keyup: update | key enter' v-if='isAmountEditing'
+  .col-xs-4 v-class='editing: isAccruedOnEditing'
+    label.accrued_on v-on='click: editAccruedOn'
       | {{accrued_on}}
+    input.edit.form-control v-model='editingValue' v-on='blur: update, keyup: update | key enter' v-if='isAccruedOnEditing'
   .col-xs-2
     span.destroy-expense v-on='click: destroyExpense(this)'
       = fa_icon "trash-o"
