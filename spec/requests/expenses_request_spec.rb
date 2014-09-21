@@ -52,6 +52,7 @@ describe 'Expenses' do
 
         expect(actual_expense['id']    ).to eq(expense.id)
         expect(actual_expense['amount']).to eq(expense.amount)
+        expect(actual_expense['accrued_on']).to eq(expense.accrued_on.to_s)
         expect(actual_expense['url']   ).to eq(expense_url(expense))
       end
     end

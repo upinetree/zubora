@@ -2,12 +2,15 @@
   h1 Listing expenses
 
 script#expense-template type='text/x-template'
-  .col-xs-8 v-class='editing: editing'
+  .col-xs-6 v-class='editing: editing'
     label.amount v-on='click: edit'
       | &yen;
       | {{amount}}
     input.edit.form-control v-model='editingAmount' v-on='blur: update, keyup: update | key enter' v-if='editing'
   .col-xs-4
+    span.accrued_on
+      | {{accrued_on}}
+  .col-xs-2
     span.destroy-expense v-on='click: destroyExpense(this)'
       = fa_icon "trash-o"
 
