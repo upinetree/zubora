@@ -8,6 +8,6 @@ class Expense < ActiveRecord::Base
   private
 
   def set_defaults
-    self.accrued_on ||= Date.today
+    self.accrued_on ||= Time.zone.today
   end
 end

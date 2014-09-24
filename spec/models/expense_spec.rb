@@ -13,7 +13,7 @@ describe Expense do
     let(:expense) { build(:expense, accrued_on: nil) }
     it 'accrued_onが空のとき、今日の日付が保存される' do
       expense.save
-      expect(expense.accrued_on).to eq(Date.today)
+      expect(expense.accrued_on).to eq(Time.zone.today)
     end
   end
 end
